@@ -20,18 +20,28 @@
 import sys, os
 from pydantic import BaseModel
 import yaml
-
+import os
 
 class ChineseWordOcrConfig(BaseModel):
 
-    data_dir = "/Users/alchemy_taotaox/Desktop/mygithub/ocrcn_tf2/dataset"
+    data_dir = "/mnt/workspace/taozw/data/ocr"
 
-    #
+    # #####中科院手写字体###############
     # how to get files below ?
     # wget http://www.nlpr.ia.ac.cn/databases/download/feature_data/HWDB1.1trn_gnt.zip
     # wget http://www.nlpr.ia.ac.cn/databases/download/feature_data/HWDB1.1tst_gnt.zip
-    train_zip_file = "HWDB1.1trn_gnt.zip"
-    test_zip_file = "HWDB1.1tst_gnt.zip"
+    casia_train_dir = os.path.join(data_dir, "casia/train")
+    casia_test_dir = os.path.join(data_dir, "casia/test")
+    casia_test_tfrecord_dir = os.path.join(data_dir, "casia/test_tf")
+    casia_train_tfrecord_dir = os.path.join(data_dir, "casia/train_tf")
+    raw_data_reader_module = "tensorflow2.ocr.chinese_word_ocr.raw_data_reader"
+    casia_reader_class = "CASIAHandWriteDataReader"
+
+    raw_data_reader_class = casia_reader_class
+    train_tf_dir = casia_train_tfrecord_dir
+    test_tf_dir = casia_test_tfrecord_dir
+    height = 64
+    width = 64
 
     @staticmethod
     def load(filename):

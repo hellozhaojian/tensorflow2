@@ -30,6 +30,7 @@ class ChineseWordOcrConfig(BaseModel):
     # how to get files below ?
     # wget http://www.nlpr.ia.ac.cn/databases/download/feature_data/HWDB1.1trn_gnt.zip
     # wget http://www.nlpr.ia.ac.cn/databases/download/feature_data/HWDB1.1tst_gnt.zip
+    # 数据解压工具 sudo apt-get install unalz
     casia_train_dir = os.path.join(data_dir, "casia/train")
     casia_test_dir = os.path.join(data_dir, "casia/test")
     casia_test_tfrecord_dir = os.path.join(data_dir, "casia/test_tf")
@@ -42,6 +43,9 @@ class ChineseWordOcrConfig(BaseModel):
     test_tf_dir = casia_test_tfrecord_dir
     height = 64
     width = 64
+
+    checkpoint_dir="/mnt/workspace/taozw/my_github/tensorflow2/run/chinese_ocr/cn_ocr-{epoch}.ckpt"
+    use_keras_fit = True
 
     @staticmethod
     def load(filename):

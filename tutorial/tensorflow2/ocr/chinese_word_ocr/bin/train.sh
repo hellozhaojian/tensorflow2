@@ -1,0 +1,1 @@
+export PYTHONPATH=..:`pwd`/../../../.. && cd .. && python train.py

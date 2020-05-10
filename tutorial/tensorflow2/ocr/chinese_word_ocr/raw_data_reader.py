@@ -10,6 +10,7 @@ import logging
 from tensorflow2.ocr.chinese_word_ocr.config import ChineseWordOcrConfig
 import cv2
 
+
 class RawDataReaderInterface(object):
     """
     原始数据读取的抽象类，子类需要实现函数get_data_iter,其yield image, label, filename

@@ -127,3 +127,6 @@ venv.bak/
 
 # tmp_data
 .data
+run
+run.bak
+run.bk
